@@ -2,7 +2,22 @@
 var altura  = 0;
 var largura = 0;
 var vidas = 1;
-var tempo = 5;
+var tempo = 15;
+var criarMosquitoTempo
+
+var nivel = window.location.search;
+nivel = nivel.replace('?', '')
+
+if(nivel === 'normal') {
+    criarMosquitoTempo = 1500;
+} else if(nivel === 'dificil') {
+    criarMosquitoTempo = 1000;
+    
+} else if (nivel === 'foderastico') {
+    criarMosquitoTempo = 750;
+
+}
+
 
 function ajustaTamanhoPalcoJogo(){
     altura = window.innerHeight;
