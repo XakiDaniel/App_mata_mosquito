@@ -1,41 +1,41 @@
 
-var altura  = 0;
-var largura = 0;
-var vidas = 1;
-var tempo = 15;
-var criarMosquitoTempo
+var height  = 0;
+var width = 0;
+var lifes = 1;
+var time = 15;
+var criarMosquitoTime = 1500;
 
 var nivel = window.location.search;
 nivel = nivel.replace('?', '')
 
 if(nivel === 'normal') {
-    criarMosquitoTempo = 1500;
+    criarMosquitoTime = 1500;
 } else if(nivel === 'dificil') {
-    criarMosquitoTempo = 1000;
+    criarMosquitoTime = 1000;
     
 } else if (nivel === 'foderastico') {
-    criarMosquitoTempo = 750;
+    criarMosquitoTime = 750;
 
 }
 
 
 function ajustaTamanhoPalcoJogo(){
-    altura = window.innerHeight;
-    largura = window.innerWidth;
-    console.log(altura, largura);
+    height = window.innerHeight;
+    width = window.innerWidth;
+    console.log(height, width);
 }
 
 ajustaTamanhoPalcoJogo()
 
 var cronometro = setInterval(function(){
-    tempo-= 1;
-    if(tempo < 0 ) {
+    time-= 1;
+    if(time < 0 ) {
         clearInterval(cronometro)
         clearInterval(criarMosquito)
         window.location.href = 'vitoria.html'
 
     } else {
-        document.getElementById('cronometro').innerHTML = tempo
+        document.getElementById('cronometro').innerHTML = time
 
     }
 }, 1000)
@@ -48,19 +48,19 @@ function posicaoRandomica(){
     if(document.getElementById('mosquito')){
         document.getElementById('mosquito').remove();
         
-        // console.log('v' + vidas)
+        // console.log('v' + lifes)
         
-        if(vidas > 3) {
+        if(lifes > 3) {
             window.location.href = 'fim_de_jogo.html';
         } else {
-            document.getElementById('v' + vidas).src='img/coracao_vazio.png';
-            vidas++;
+            document.getElementById('v' + lifes).src='img/coracao_vazio.png';
+            lifes++;
         }
     }
 
 
-    var posicaoX = Math.floor(Math.random() * largura) -90; // -90 ADICIONADO PARA NÃO ESTOURAR
-    var posicaoY = Math.floor(Math.random() * altura) - 90; 
+    var posicaoX = Math.floor(Math.random() * width) -90; // -90 ADICIONADO PARA NÃO ESTOURAR
+    var posicaoY = Math.floor(Math.random() * height) - 90; 
 
     // AJUSTANDO A PROBABILIDADE DE POSIÇÕES NEGATIVAS SENDO CRIADAS ALEATÓRIAS JÁ QUE SUBTRAIMOS O VALOR 90
     posicaoX = posicaoX < 0 ? 0 : posicaoX;
